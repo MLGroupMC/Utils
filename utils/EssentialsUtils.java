@@ -14,7 +14,7 @@ import net.ess3.api.IEssentials;
 public class EssentialsUtils{
 	
     //kitName - kit name
-    //iess - objekt IEssentials (cast Essentials na IEssentials)
+    //iess - obiekt IEssentials (cast Essentials na IEssentials)
     //currencySymbol - symbol waluty z Essentiala (możliwy do pobrania z api)
     //onlyItems - czy w liście mają znajdować się tylko itemy z kitu czy też itemy razem z pieniędzmi itp.
     @SuppressWarnings("rawtypes")
