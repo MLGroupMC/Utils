@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 public class ResponsiveReplace {
 
-    //string - String in which the item is to be replaced
+    //string - String in which certain items will be replaced
     //pattern - Something to be replaced similar to "\\{TOP\\-[0-9]*\\}"
     //list - List from which to retrieve the item
     public String replace(String string, String pattern, List<?> list) {
