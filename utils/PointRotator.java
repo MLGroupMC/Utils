@@ -6,25 +6,21 @@ public class PointRotator {
     //center - array with point around which point will be rotated (x, y)
     //angle - angle in degrees
     public static double[] rotatePointDeg(double[] point, double center[], double angle) {
-        return rotatePoint(point, center, Math.toRadians(angle), 0);
+        return rotatePointRad(point, center, Math.toRadians(angle), 0);
     }
     //length - if needed, increases distance of rotated point from center by given amount
     public static double[] rotatePointDeg(double[] point, double center[], double angle, double length) {
-        return rotatePoint(point, center, Math.toRadians(angle), length);
+        return rotatePointRad(point, center, Math.toRadians(angle), length);
     }
 
     //point - array with point that will be rotated (x, y)
     //center - array with point around which point will be rotated (x, y)
     //angle - angle in radians
     public static double[] rotatePointRad(double[] point, double center[], double angle) {
-        return rotatePoint(point, center, angle, 0);
+        return rotatePointRad(point, center, angle, 0);
     }
     //length - if needed, increases distance of rotated point from center by given amount
     public static double[] rotatePointRad(double[] point, double center[], double angle, double length) {
-        return rotatePoint(point, center, angle, length);
-    }
-
-    private static double[] rotatePoint(double[] point, double center[], double angle, double length) {
         double x1 = point[0]-center[0];
         double y1 = point[1]-center[1];
         double r = Math.hypot(x1, y1)+length;
