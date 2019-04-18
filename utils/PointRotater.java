@@ -1,4 +1,4 @@
-package core.masno.ni.tools.managers;
+package xyz;
 
 public class PointRotater {
 
