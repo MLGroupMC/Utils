@@ -1,4 +1,4 @@
-package xyz;
+package core.masno.ni.tools.managers;
 
 public class PointRotater {
 
@@ -33,8 +33,8 @@ public class PointRotater {
                 return center.clone();
             if(y1 > 0)
                 return new double[] {
-                        r*Math.cos(angle)+center[1],
-                        -r*Math.sin(angle)+center[0]
+                        -r*Math.sin(angle)+center[0],
+                        r*Math.cos(angle)+center[1]
                 };
             return new double[] {
                     r*Math.sin(angle)+center[0],
@@ -53,4 +53,3 @@ public class PointRotater {
     }
 
 }
-
