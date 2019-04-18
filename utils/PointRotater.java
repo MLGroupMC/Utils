@@ -2,16 +2,16 @@ package xyz;
 
 public class PointRotater {
 
-    //point - tablica z punktem który ma zostać obrócony (x, y)
-    //center - tablica z punktem wokół którego punkt ma zostać obrócony (x, y)
-    //angle - kąt w stopniach
+    //point - array with point that will be rotated (x, y)
+    //center - array with point around which point will be rotated (x, y)
+    //angle - angle in degrees
     public static double[] rotatePointDeg(double[] point, double center[], double angle) {
         return rotatePoint(point, center, Math.toRadians(angle));
     }
 
-    //point - tablica z punktem który ma zostać obrócony (x, y)
-    //center - tablica z punktem wokół którego punkt ma zostać obrócony (x, y)
-    //angle - kąt w radianach
+    //point - array with point that will be rotated (x, y)
+    //center - array with point around which point will be rotated (x, y)
+    //angle - angle in radians
     public static double[] rotatePoint(double[] point, double center[], double angle) {
         double x1 = point[0]-center[0];
         double y1 = point[1]-center[1];
