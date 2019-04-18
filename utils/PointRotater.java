@@ -43,7 +43,7 @@ public class PointRotater {
         }
         double k = y1/x1;
         double p = 1/Math.sqrt(1+k*k);
-        double q = x1 >= 0 ? r*p : -r*p;
+        double q = x1 > 0 ? r*p : -r*p;
         double sin = Math.sin(angle);
         double cos = Math.cos(angle);
         return new double[] {
