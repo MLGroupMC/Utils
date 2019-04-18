@@ -27,7 +27,7 @@ public class PointRotater {
     private static double[] rotatePoint(double[] point, double center[], double angle, double length) {
         double x1 = point[0]-center[0];
         double y1 = point[1]-center[1];
-        double r = Math.hypot(x1, y1);
+        double r = Math.hypot(x1, y1)+length;
         double k = y1/x1;
         double p = 1/Math.sqrt(1+k*k);
         double q = x1 >= 0 ? r*p : -r*p;
