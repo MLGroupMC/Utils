@@ -23,11 +23,24 @@ public class PointRotater {
     public static double[] rotatePointRad(double[] point, double center[], double angle, double length) {
         return rotatePoint(point, center, angle, length);
     }
-    
+
     private static double[] rotatePoint(double[] point, double center[], double angle, double length) {
         double x1 = point[0]-center[0];
         double y1 = point[1]-center[1];
         double r = Math.hypot(x1, y1)+length;
+        if (x1 == 0) {
+            if(y1 == 0)
+                return center.clone();
+            if(y1 > 0)
+                return new double[] {
+                        r*Math.cos(angle)+center[1],
+                        -r*Math.sin(angle)+center[0]
+                };
+            return new double[] {
+                    r*Math.sin(angle)+center[0],
+                    -r*Math.cos(angle)+center[1],
+            };
+        }
         double k = y1/x1;
         double p = 1/Math.sqrt(1+k*k);
         double q = x1 >= 0 ? r*p : -r*p;
@@ -40,3 +53,4 @@ public class PointRotater {
     }
 
 }
+
