@@ -6,9 +6,9 @@ import java.util.regex.Pattern;
 
 public class ResponsiveReplace {
 
-    //string - String in which certain items will be replaced
-    //pattern - Something to be replaced similar to "\\{TOP\\-[0-9]*\\}"
-    //list - List from which to retrieve the item
+    //string - string in which certain items will be replaced
+    //pattern - pattern with number - similar to "\\{TOP\\-[0-9]*\\}" - where number indicates place from list+1
+    //list - list from which item will be taken
     public String replace(String string, String pattern, List<?> list) {
         Matcher m = Pattern.compile(pattern).matcher(string);
         while(m.find()) {
