@@ -23,7 +23,7 @@ public static void color(){
 }
 	
 
-Bukkit.getScheduler().scheduleAsyncRepeatingTask(MCKTools.getInst(), new Runnable() {
+Bukkit.getScheduler().scheduleAsyncRepeatingTask(plugin, new Runnable() {
     @Override
     public void run() {
         for (Player pl : Bukkit.getOnlinePlayers()) {
