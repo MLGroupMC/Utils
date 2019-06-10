@@ -13,7 +13,6 @@ public class EquipmentUtil {
 
     private String version = Bukkit.getServer().getClass().getPackage().getName().replace(".", ",").split(",")[3] + ".";
     private int versionNumber = Integer.parseInt(version.split("_")[1]);
-
     
     /*
         player - player on which item will be displayed
@@ -23,6 +22,7 @@ public class EquipmentUtil {
         
         ! Item will be visible only for other players not for the player on which item will be displayed
     */
+    
     public void setPlayerSlot(Player player, int slot, ItemStack item) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException, InstantiationException, NoSuchFieldException {
         Class<?> packetClass = getNMSClass("PacketPlayOutEntityEquipment");
         Class<?> bukkitItemstackClass = getCraftItemStack();
