@@ -11,10 +11,18 @@ import java.lang.reflect.Method;
 
 public class EquipmentUtil {
 
-    String version = Bukkit.getServer().getClass().getPackage().getName().replace(".", ",").split(",")[3] + ".";
-
+    private String version = Bukkit.getServer().getClass().getPackage().getName().replace(".", ",").split(",")[3] + ".";
     private int versionNumber = Integer.parseInt(version.split("_")[1]);
 
+    
+    /*
+        player - player on which item will be displayed
+        slot - slot in wich item will be displayed (0 - main hand, 1 - off hand, 2 - boots, 3 - leggings, 4 - chestplate, 5 - helmet, 
+          if version of minecraft will be lower or equal 1.8 and you put item in slot 1 item will be displayed in main hand)
+        item - item which will be displayed in slot
+        
+        ! Item will be visible only for other players not for the player on which item will be displayed
+    */
     public void setPlayerSlot(Player player, int slot, ItemStack item) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException, InstantiationException, NoSuchFieldException {
         Class<?> packetClass = getNMSClass("PacketPlayOutEntityEquipment");
         Class<?> bukkitItemstackClass = getCraftItemStack();
