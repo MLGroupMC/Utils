@@ -1,6 +1,6 @@
 package xyz;
 
-public class PointRotator {
+public class PointRotor {
 
     //point - array with point that will be rotated (x, y)
     //center - array with point around which point will be rotated (x, y)
