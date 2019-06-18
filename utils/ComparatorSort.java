@@ -8,7 +8,7 @@ import java.util.TreeMap;
 
 import com.google.common.collect.Lists;
   
-public class StandartSort {
+public class StandardSort {
     
     public static List<User> sort(List<User> toSort) { 
         HashMap<User, Integer> map = new HashMap<User, Integer>();
