@@ -16,7 +16,7 @@ public class RecipeUtil {
     public static void removeRecipe(Recipe recipe) {
         if(recipe == null || getRecipesFor(recipe.getResult()).isEmpty())
             return;
-        Runnable runnable = () -> {
+        new Thread(() -> {
             boolean shallReturn = true;
             List<Recipe> modified = new ArrayList<>();
             Iterator<Recipe> iterator = Bukkit.recipeIterator();
@@ -44,14 +44,13 @@ public class RecipeUtil {
                         Bukkit.addRecipe(current);
                     } catch(IllegalStateException ignored) {}
             }
-        };
-        new Thread(runnable).start();
+        }).start();
     }
 
     public static void removeRecipes(List<Recipe> recipes) {
         if(recipes == null || recipes.isEmpty())
             return;
-        Runnable runnable = () -> {
+        new Thread(() -> {
             boolean shallReturn = true;
             List<Recipe> modified = new ArrayList<>();
             Iterator<Recipe> iterator = Bukkit.recipeIterator();
@@ -81,8 +80,7 @@ public class RecipeUtil {
                         Bukkit.addRecipe(recipe);
                     } catch (IllegalStateException ignored) {}
             }
-        };
-        new Thread(runnable).start();
+        }).start();
     }
 
     public static void removeRecipesFor(ItemStack is) {
