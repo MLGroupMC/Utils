@@ -30,19 +30,21 @@ public class RecipeUtil {
             if(shallReturn)
                 return;
             Bukkit.resetRecipes();
+            List<Recipe> after = new ArrayList<>();
+            Bukkit.recipeIterator().forEachRemaining(after::add);
             for(Recipe current : modified) {
-                iterator = Bukkit.recipeIterator();
                 boolean shallAdd = true;
-                while(iterator.hasNext()) {
-                    if(compare(iterator.next(), current)) {
+                for(int i = 0; i < after.size(); i++) {
+                    if(compare(after.get(i), current)) {
                         shallAdd = false;
+                        after.remove(i);
                         break;
                     }
                 }
                 if(shallAdd)
                     try {
                         Bukkit.addRecipe(current);
-                    } catch(IllegalStateException ignored) {}
+                    } catch (IllegalStateException ignored) {}
             }
         }).start();
     }
@@ -66,10 +68,10 @@ public class RecipeUtil {
             Bukkit.resetRecipes();
             List<Recipe> after = new ArrayList<>();
             Bukkit.recipeIterator().forEachRemaining(after::add);
-            for(Recipe recipe : modified) {
+            for(Recipe current : modified) {
                 boolean shallAdd = true;
                 for(int i = 0; i < after.size(); i++) {
-                    if(compare(after.get(i), recipe)) {
+                    if(compare(after.get(i), current)) {
                         shallAdd = false;
                         after.remove(i);
                         break;
@@ -77,7 +79,7 @@ public class RecipeUtil {
                 }
                 if(shallAdd)
                     try {
-                        Bukkit.addRecipe(recipe);
+                        Bukkit.addRecipe(current);
                     } catch (IllegalStateException ignored) {}
             }
         }).start();
