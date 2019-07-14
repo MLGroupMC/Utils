@@ -84,19 +84,19 @@ public class RecipeUtil {
             }
         }).start();
     }
-
-    public static void removeRecipesFor(ItemStack is) {
-        if(is == null || is.getType() == Material.AIR)
-            return;
-        removeRecipes(getRecipesFor(is));
-    }
-
+    
     public static void removeRecipes(Recipe... recipes) {
         if(recipes.length == 0)
             return;
         removeRecipes(Arrays.asList(recipes));
     }
 
+    public static void removeRecipesFor(ItemStack is) {
+        if(is == null || is.getType() == Material.AIR)
+            return;
+        removeRecipes(getRecipesFor(is));
+    }
+    
     public static List<Recipe> getRecipesFor(ItemStack is) {
         if(is == null || is.getType() == Material.AIR)
             return Collections.emptyList();
