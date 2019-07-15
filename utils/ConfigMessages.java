@@ -16,7 +16,7 @@ import java.util.*;
         lower/upperCase w nazwach zmiennych ma znaczenie!!
 
         Format zmiennych:
-            dla pojedyńczej zmiennej:   {VARNAME}
+            dla pojedynczej zmiennej:   {VARNAME}
             dla elementu %pos% z listy: {VARNAME-%pos%}
             dla zawartości listy:       {VARNAME}
 
@@ -58,18 +58,18 @@ public class Message {
                     messages.add(rawPattern.substring(last + 1, i));
                     start = i;
                 }
-            } else if (rawPattern.charAt(i) == '}' && !(i != 0 && rawPattern.charAt(i - 1) == '\\')) {
+            } else if(rawPattern.charAt(i) == '}' && !(i != 0 && rawPattern.charAt(i - 1) == '\\')) {
                 count--;
                 if(count == 0) {
                     String var = rawPattern.substring(start + 1, i);
                     vars.add(var);
                     Object[] compounds = getArrayCompounds(var);
-                    possibleDeclarations.add(((compounds[0]+"-"+compounds[1]).equals(var)) ? (String) compounds[0] : var);
+                    possibleDeclarations.add(((compounds[0] + "-" + compounds[1]).equals(var)) ? (String) compounds[0] : var);
                     last = i;
                 }
             }
         }
-        messages.add(rawPattern.substring(last+1));
+        messages.add(rawPattern.substring(last + 1));
     }
 
     public Message(String rawPattern, String... sequence) {
@@ -106,15 +106,15 @@ public class Message {
                 if(var.equals(possibleDeclarations.get(i))) {
                     if(data.getClass().isArray()) {
                         Object[] array = (Object[]) data;
-                        for(int j = 0; j < array.length;) {
+                        for(int j = 0; j < array.length; ) {
                             builder.append(array[j]);
                             j++;
                             if(j != array.length)
                                 builder.append(", ");
                         }
                     } else if(data instanceof Collection) {
-                        List list = (data instanceof List) ? (List)data : new ArrayList((Collection)data);
-                        for(int j = 0; j < list.size();) {
+                        List list = (data instanceof List) ? (List) data : new ArrayList((Collection) data);
+                        for(int j = 0; j < list.size(); ) {
                             builder.append(list.get(j));
                             j++;
                             if(j != list.size())
@@ -125,7 +125,7 @@ public class Message {
                     }
                     continue;
                 }
-                builder.append(getFromAnyList(data, (int) getArrayCompounds(var)[1]-1));
+                builder.append(getFromAnyList(data, (int) getArrayCompounds(var)[1] - 1));
             }
         }
         return builder.toString();
@@ -140,7 +140,7 @@ public class Message {
                 return ((Object[]) anyList)[index];
             return null;
         } else if(anyList instanceof Collection) {
-            List list = (anyList instanceof List) ? (List)anyList : new ArrayList((Collection)anyList);
+            List list = (anyList instanceof List) ? (List) anyList : new ArrayList((Collection) anyList);
             if(index < list.size())
                 return list.get(index);
             return null;
@@ -150,14 +150,15 @@ public class Message {
 
     private Object[] getArrayCompounds(String array) {
         int pos = 0;
-        for(int i = array.length()-1; i > 0; i--)
+        for(int i = array.length() - 1; i > 0; i--)
             if(array.charAt(i) == '-') {
                 try {
-                    pos = Integer.valueOf(array.substring(i+1));
-                } catch(IllegalArgumentException ignored) {}
-                return new Object[] {array.substring(0, i), pos};
+                    pos = Integer.valueOf(array.substring(i + 1));
+                } catch(IllegalArgumentException ignored) {
+                }
+                return new Object[]{array.substring(0, i), pos};
             }
-        return new Object[] {array, 0};
+        return new Object[]{array, 0};
     }
 
 }
