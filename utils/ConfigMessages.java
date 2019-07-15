@@ -45,6 +45,11 @@ public class Message {
 
     private final List<String> vars, messages, possibleDeclarations, varSequence;
 
+    public Message(String rawPattern, String... sequence) {
+        this(rawPattern);
+        registerVariableSequence(sequence);
+    }
+
     public Message(String rawPattern) {
         this.vars = new ArrayList<>();
         this.messages = new ArrayList<>();
@@ -70,11 +75,6 @@ public class Message {
             }
         }
         messages.add(rawPattern.substring(last + 1));
-    }
-
-    public Message(String rawPattern, String... sequence) {
-        this(rawPattern);
-        registerVariableSequence(sequence);
     }
 
     public void registerVariableSequence(String... sequence) {
