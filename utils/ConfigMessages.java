@@ -1,4 +1,4 @@
-package xyz;
+package core;
 
 import java.util.*;
 
@@ -13,6 +13,7 @@ import java.util.*;
 
         Aby sparsować wiadomość należy użyć metody create(Object... args) i wprowadzić do niej zmienne,
         zgodnie z kolejnością zmiennych z konstruktora, tak aby mogły być odpowiednio podmieniane
+        lower/upperCase w nazwach zmiennych ma znaczenie!!
 
         Format zmiennych:
             dla pojedyńczej zmiennej:   {VARNAME}
