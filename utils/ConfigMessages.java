@@ -106,7 +106,7 @@ public class Message {
                 if(var.equals(possibleDeclarations.get(i))) {
                     if(data.getClass().isArray()) {
                         Object[] array = (Object[]) data;
-                        for(int j = 0; j < array.length; ) {
+                        for(int j = 0; j < array.length;) {
                             builder.append(array[j]);
                             j++;
                             if(j != array.length)
@@ -114,7 +114,7 @@ public class Message {
                         }
                     } else if(data instanceof Collection) {
                         List list = (data instanceof List) ? (List) data : new ArrayList((Collection) data);
-                        for(int j = 0; j < list.size(); ) {
+                        for(int j = 0; j < list.size();) {
                             builder.append(list.get(j));
                             j++;
                             if(j != list.size())
