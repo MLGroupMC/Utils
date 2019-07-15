@@ -1,4 +1,4 @@
-package core;
+package xyz;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
