@@ -47,7 +47,7 @@ public class Message {
 
     public Message(String rawPattern, String... sequence) {
         this(rawPattern);
-        registerVariableSequence(sequence);
+        defineVariableSequence(sequence);
     }
 
     public Message(String rawPattern) {
@@ -77,7 +77,7 @@ public class Message {
         messages.add(rawPattern.substring(last + 1));
     }
 
-    public void registerVariableSequence(String... sequence) {
+    public void defineVariableSequence(String... sequence) {
         if(!varSequence.isEmpty())
             varSequence.clear();
         varSequence.addAll(Arrays.asList(sequence));
