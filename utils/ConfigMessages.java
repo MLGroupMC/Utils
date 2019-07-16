@@ -1,4 +1,4 @@
-package core;
+package xyz;
 
 import java.util.*;
 
@@ -103,7 +103,7 @@ public class Message {
                     builder.append("null");
                     continue;
                 }
-                if(var.equals(possibleDeclarations.get(i))) {
+                if(var.equals(declared)) {
                     if(data.getClass().isArray()) {
                         Object[] array = (Object[]) data;
                         for(int j = 0; j < array.length;) {
