@@ -1,4 +1,4 @@
-package xyz;
+package core;
 
 import java.util.*;
 
@@ -120,9 +120,8 @@ public class Message {
                             if(j != list.size())
                                 builder.append(", ");
                         }
-                    } else {
+                    } else
                         builder.append(data);
-                    }
                     continue;
                 }
                 builder.append(getFromAnyList(data, (int) getArrayCompounds(var)[1] - 1));
