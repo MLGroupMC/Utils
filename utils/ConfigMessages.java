@@ -57,20 +57,28 @@ public class Message {
         this.varSequence = new ArrayList<>();
         int count = 0, start = 0, last = -1;
         for(int i = 0; i < rawPattern.length(); i++) {
-            if(rawPattern.charAt(i) == '{' && !(i != 0 && rawPattern.charAt(i - 1) == '\\')) {
-                count++;
-                if(count == 1) {
-                    messages.add(rawPattern.substring(last + 1, i));
-                    start = i;
+            if(rawPattern.charAt(i) == '{') {
+                if(i != 0 && rawPattern.charAt(i - 1) == '\\')
+                    rawPattern = rawPattern.substring(0, i-1)+rawPattern.substring(i);
+                else {
+                    count++;
+                    if(count == 1) {
+                        messages.add(rawPattern.substring(last + 1, i));
+                        start = i;
+                    }
                 }
-            } else if(rawPattern.charAt(i) == '}' && !(i != 0 && rawPattern.charAt(i - 1) == '\\')) {
-                count--;
-                if(count == 0) {
-                    String var = rawPattern.substring(start + 1, i);
-                    vars.add(var);
-                    Object[] compounds = getArrayCompounds(var);
-                    possibleDeclarations.add(((compounds[0] + "-" + compounds[1]).equals(var)) ? (String) compounds[0] : var);
-                    last = i;
+            } else if(rawPattern.charAt(i) == '}') {
+                if(i != 0 && rawPattern.charAt(i - 1) == '\\')
+                    rawPattern = rawPattern.substring(0, i-1)+rawPattern.substring(i);
+                else {
+                    count--;
+                    if(count == 0) {
+                        String var = rawPattern.substring(start + 1, i);
+                        vars.add(var);
+                        Object[] compounds = getArrayCompounds(var);
+                        possibleDeclarations.add(((compounds[0] + "-" + compounds[1]).equals(var)) ? (String) compounds[0] : var);
+                        last = i;
+                    }
                 }
             }
         }
