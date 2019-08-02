@@ -6,6 +6,7 @@ import java.util.regex.Pattern;
 
 public class ResponsiveReplace {
 
+    //if you wanna use it for config variable parsing, use ConfigMessages instead, it's just more efficient and doesnt use regex...
     //string - string in which certain items will be replaced
     //pattern - pattern with number - similar to "\\{TOP\\-[0-9]*\\}" (eg. "{TOP-3}" matches)- where number indicates place from list+1
     //list - list from which item will be taken
