@@ -5,7 +5,7 @@ import java.util.*;
 public class StandardSort {
   
     /*
-      Sort top to bottom
+      Sortowanie malejące
     */
     public static List<User> sort(List<User> toSort) {
         TreeSet<User> treeSet = new TreeSet<>(new ValueComparator());
