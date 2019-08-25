@@ -3,6 +3,10 @@ package xyz;
 import java.util.*;
   
 public class StandardSort {
+  
+    /*
+      Sort top to bottom
+    */
     public static List<User> sort(List<User> toSort) {
         Map<User, Integer> map = new HashMap<>();
         for(User u : toSort)
@@ -26,4 +30,5 @@ public class StandardSort {
         }
 
     }
+  
 }
