@@ -8,27 +8,20 @@ public class StandardSort {
       Sort top to bottom
     */
     public static List<User> sort(List<User> toSort) {
-        Map<User, Integer> map = new HashMap<>();
-        for(User u : toSort)
-            map.put(u, u.getLvl());
-        TreeMap<User, Integer> sortedMap = new TreeMap<>(new ValueComparator(map));
-        sortedMap.putAll(map);
-        return new ArrayList<>(sortedMap.keySet());
+        TreeSet<User> treeSet = new TreeSet<>(new ValueComparator());
+        treeSet.addAll(toSort);
+        return new ArrayList<>(treeSet);
     }
 
     private static class ValueComparator implements Comparator<User> {
 
-        Map<User, Integer> base;
-
-        ValueComparator(Map<User, Integer> base) {
-            this.base = base;
-        }
+        ValueComparator() {}
 
         @Override
         public int compare(User a, User b) {
-            return base.get(a) < base.get(b) ? 1 : -1;
+            return a.getLvl() < b.getLvl() ? 1 : -1;
         }
 
     }
-  
+
 }
