@@ -6,6 +6,9 @@ import org.bukkit.inventory.*;
 
 import java.util.*;
 
+/*
+    Używać najrzadziej jak się da!
+*/
 public class RecipeUtil {
 
     public static void register(Recipe r) {
