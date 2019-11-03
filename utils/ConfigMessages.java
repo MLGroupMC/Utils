@@ -1,4 +1,4 @@
-package xyz;
+package xyz
 
 import java.util.*;
 
