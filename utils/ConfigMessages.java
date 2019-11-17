@@ -1,5 +1,6 @@
 package xyz;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 /*
@@ -138,13 +139,16 @@ public class Message {
         return builder.toString();
     }
 
-    private Object getFromAnyList(Object anyList, int index) {
+    public static Object getFromAnyList(Object anyList, int index) {
         if(anyList == null || index < 0)
             return null;
         if(anyList.getClass().isArray()) {
-            Object[] array = (Object[]) anyList;
-            if(index < array.length)
-                return ((Object[]) anyList)[index];
+            if(anyList instanceof Object[]) {
+                Object[] array = (Object[]) anyList;
+                if(index < array.length)
+                    return ((Object[]) anyList)[index];
+            } else
+                return Array.get(anyList, index);
             return null;
         } else if(anyList instanceof Collection) {
             List list = (anyList instanceof List) ? (List) anyList : new ArrayList((Collection) anyList);
