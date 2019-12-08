@@ -2,7 +2,7 @@ package xyz;
 
 import java.util.*;
   
-public class StandardSort {
+public class ComparatorSort {
   
     /*
       Sortowanie malejące (według wartości User::getLevel)
