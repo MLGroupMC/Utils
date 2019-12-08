@@ -16,9 +16,9 @@ public class StandardSort {
 
     private static class ValueComparator implements Comparator<User> {
 
-		ValueComparator() {}
+        ValueComparator() {}
 
-		@Override
+        @Override
         public int compare(User a, User b) {
             if(a.getLevel() < b.getLevel()){
                 return 1;
