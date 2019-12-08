@@ -23,6 +23,7 @@ public class ComparatorSort {
             if(a.getLevel() < b.getLevel()){
                 return 1;
             } else{
+		//jeśli warości są takie same to układane są one alfabetycznie (jeśli chcesz aby były układane wg, która była pierwsza na liście, zwrócić -1)
                 if(a.getLevel() == b.getLevel()){
                     int compare = a.getName().compareTo(b.getName());
 
