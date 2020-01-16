@@ -9,9 +9,10 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-public class ColorParticlesUtil {
+public class ColorParticleUtil {
+
     public void sendParticle(Player player, Location location, int red, int green, int blue) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, InstantiationException, ClassNotFoundException, NoSuchFieldException {
-        if(player.getLocation().getWorld() == location.getWorld()) {
+        if (player.getLocation().getWorld() == location.getWorld()) {
             Class<?> packetClass = getNMSClass("PacketPlayOutWorldParticles");
             Class<?> enumClass = getNMSClass("EnumParticle");
             Method m = enumClass.getMethod("a", int.class);
@@ -44,11 +45,12 @@ public class ColorParticlesUtil {
     }
 
     private Class<?> getNMSClass(String nmsClassString) throws ClassNotFoundException {
-        String version = Bukkit.getServer().getClass().getPackage().getName().replace(".", ",").split(",")[3] + ".";
+        String version = getVersion();
         String name = "net.minecraft.server." + version + "." + nmsClassString;
         Class<?> nmsClass = Class.forName(name);
         return nmsClass;
     }
+
     private Object getConnection(Player player) throws SecurityException, NoSuchMethodException, NoSuchFieldException, IllegalArgumentException, IllegalAccessException, InvocationTargetException {
         Method getHandle = player.getClass().getMethod("getHandle");
         Object nmsPlayer = getHandle.invoke(player);
@@ -57,8 +59,15 @@ public class ColorParticlesUtil {
         return con;
     }
 
-    private float convertColor(int color){
-        return (color*0.007843F)-1F;
+    private float convertColor(int color) {
+        return (color * 0.007843F) - 1F;
     }
 
+    public int getVersionNumber() {
+        return Integer.parseInt(getVersion().split("_")[1]);
+    }
+
+    public String getVersion() {
+        return Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
+    }
 }
