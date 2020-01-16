@@ -45,7 +45,7 @@ public class ColorParticlesUtil {
 
     private Class<?> getNMSClass(String nmsClassString) throws ClassNotFoundException {
         String version = Bukkit.getServer().getClass().getPackage().getName().replace(".", ",").split(",")[3] + ".";
-        String name = "net.minecraft.server." + version + nmsClassString;
+        String name = "net.minecraft.server." + version + "." + nmsClassString;
         Class<?> nmsClass = Class.forName(name);
         return nmsClass;
     }
